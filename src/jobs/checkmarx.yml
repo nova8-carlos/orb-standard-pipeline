@@ -36,7 +36,6 @@ steps:
   - cxflow/scan:
       preset: $CHECKMARX_PRESET
       team: $CHECKMARX_TEAM
-      incremental: true
       no-output-timeout: <<parameters.no-output-timeout>>
       # PARAMETER_PROJECT_BRANCH_NAME is populated in scripts/checkmarx.sh script ;)
       # PARAMETER_BRANCH_NAME_SANITIZED is created in scripts/checkmarx.sh to remove invalid characters to cxflow rules
@@ -46,6 +45,7 @@ steps:
       sca-appUrl: "https://sca.scacheckmarx.com"
       bug-tracker: GitHub
       params: >-
+        --cx-flow.incremental=true
         --cx-flow.zip-exclude="${PARAMETER_SYMBOLIC_FILES}"
         --checkmarx.settings-override=true
         --namespace="${CIRCLE_PROJECT_USERNAME}"
